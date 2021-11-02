@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Welcome to Register</title>
+<style>
+	.error{
+		color:red;
+	}
+</style>
+<script>
+/*
+分析:
+	1.給表單綁定onsubmit事件,監聽器中判斷每一個方法驗證的結果
+		如果都為true,則監聽器方法返回true
+		如果有一個為false,則監聽器方法返回false
+		
+	2.定義一些方法分別驗證給各個表單項
+	3.給各個表單項綁定onblur事件
+*/
+window.onload = function(){
+//1.給表單綁定onsubmit事件
+document.getElementById("form").onsubmit = function(){
+	//調用姓氏驗證方法 checkfirstname();
+	//調用名字驗證方法 checklastname();
+	//調用帳戶驗證方法 checkusername();
+	//調用密碼驗證方法 checkpassword();
+	//調用地址驗證方法 checkaddress();
+	//調用聯絡方式驗證方法 checkcontact();
+	return checkfirstname() && checklastname() && checkusername() && checkpassword() && checkaddress() && checkcontact();
+}
+
+//給用戶名和密碼分別綁定離焦事件
+document.getElementById("firstname").onblur = checkfirstname;
+document.getElementById("lastname").onblur = checklastname;
+document.getElementById("username").onblur = checkusername;
+document.getElementById("password").onblur = checkpassword;
+document.getElementById("address").onblur = checkaddress;
+document.getElementById("contact").onblur = checkcontact;
+}
+//驗證用戶名方法
+function checkfirstname(){
+//1.獲取用戶名的值
+var firstname = document.getElementById("firstname").value;
+//2.定義正則表示法
+var reg_firstname = /^\w{1,12}$/;
+//3.判斷值是否符合正則的規則
+var flag = reg_firstname.test(firstname);
+//4.提示訊息
+var s_firstname = document.getElementById("s_firstname");
+if(flag){
+	//提示綠勾
+	s_firstname.innerHTML = "<img width='35px' height='25' src='true.jpg'>";
+}else{
+	//提示紅色用戶名錯誤
+	s_firstname.innerHTML = "格式有誤";
+	}
+	return flag;
+}
+
+//驗證用戶名方法
+function checklastname(){
+//1.獲取用戶名的值
+var lastname = document.getElementById("lastname").value;
+//2.定義正則表示法
+var reg_lastname = /^\w{1,12}$/;
+//3.判斷值是否符合正則的規則
+var flag2 = reg_lastname.test(lastname);
+//4.提示訊息
+var s_lastname = document.getElementById("s_lastname");
+if(flag2){
+	//提示綠勾
+	s_lastname.innerHTML = "<img width='35px' height='25' src='true.jpg'>";
+}else{
+	//提示紅色用戶名錯誤
+	s_lastname.innerHTML = "格式有誤";
+	}
+	return flag2;
+}
+
+//驗證用戶名方法
+function checkusername(){
+//1.獲取用戶名的值
+var username = document.getElementById("username").value;
+//2.定義正則表示法
+var reg_username = /^\w{6,12}$/;
+//3.判斷值是否符合正則的規則
+var flag3 = reg_username.test(username);
+//4.提示訊息
+var s_username = document.getElementById("s_username");
+if(flag3){
+	//提示綠勾
+	s_username.innerHTML = "<img width='35px' height='25' src='true.jpg'>";
+}else{
+	//提示紅色用戶名錯誤
+	s_username.innerHTML = "格式有誤";
+	}
+	return flag3;
+}
+
+//驗證用戶名方法
+function checkpassword(){
+//1.獲取用戶名的值
+var password = document.getElementById("password").value;
+//2.定義正則表示法
+var reg_password = /^\w{6,12}$/;
+//3.判斷值是否符合正則的規則
+var flag4 = reg_password.test(password);
+//4.提示訊息
+var s_password = document.getElementById("s_password");
+if(flag4){
+	//提示綠勾
+	s_password.innerHTML = "<img width='35px' height='25' src='true.jpg'>";
+}else{
+	//提示紅色用戶名錯誤
+	s_password.innerHTML = "格式有誤";
+	}
+	return flag4;
+}
+
+//驗證用戶名方法
+function checkaddress(){
+//1.獲取用戶名的值
+var address = document.getElementById("address").value;
+//2.定義正則表示法
+var reg_address = /^\w{6,20}$/;
+//3.判斷值是否符合正則的規則
+var flag5 = reg_address.test(address);
+//4.提示訊息
+var s_address = document.getElementById("s_address");
+if(flag5){
+	//提示綠勾
+	s_address.innerHTML = "<img width='35px' height='25' src='true.jpg'>";
+}else{
+	//提示紅色用戶名錯誤
+	s_address.innerHTML = "格式有誤";
+	}
+	return flag5;
+}
+
+//驗證用戶名方法
+function checkcontact(){
+//1.獲取用戶名的值
+var contact = document.getElementById("contact").value;
+//2.定義正則表示法
+var reg_contact = /^\w{9,20}$/;
+//3.判斷值是否符合正則的規則
+var flag6 = reg_contact.test(contact);
+//4.提示訊息
+var s_contact = document.getElementById("s_contact");
+if(flag6){
+	//提示綠勾
+	s_contact.innerHTML = "<img width='35px' height='25' src='true.jpg'>";
+}else{
+	//提示紅色用戶名錯誤
+	s_contact.innerHTML = "格式有誤";
+	}
+	return flag6;
+}
+
+</script>
+</head>
+<body>
+<div align="center">
+		<h1>歡迎來到註冊頁面</h1>
+		<form action="employeeServlet" id="form" method="post">
+			<table style="with:80%">
+				<tr>
+					<td>First Name</td>
+					<td><input type="text" name="firstName" id="firstname" placeholder="請輸入姓氏">
+					<span id="s_firstname" class="error"></span>
+					</td>
+				</tr>
+				<tr>
+					<td>Last Name</td>
+					<td><input type="text" name="lastName" id="lastname" placeholder="請輸入名字">
+					<span id="s_lastname" class="error"></span>
+				</tr>
+				<tr>
+					<td>UserName</td>
+					<td><input type="text" name="username" id="username" placeholder="請輸入帳號6~12位英文數字">
+					<span id="s_username" class="error"></span>
+				</tr>
+				<tr>
+					<td>Password</td>
+					<td><input type="password" name="password" id="password" placeholder="請輸入密碼6~12位英文數字">
+					<span id="s_password" class="error"></span>
+				</tr>
+				<tr>
+					<td>Address</td>
+					<td><input type="text" name="address" id="address" placeholder="請輸入地址6~20位英文數字">
+					<span id="s_address" class="error"></span>
+				</tr>
+				<tr>
+					<td>Contact No</td>
+					<td><input type="text" name="contact" id="contact" placeholder="請輸入聯絡方式9~20位數字">
+					<span id="s_contact" class="error"></span>
+				</tr>
+			</table>
+			<input type="submit" value="確定註冊"/>
+			<input type="button" value="返回登入頁面" onclick="javascript:location.href='login.jsp'">
+		</form>
+	</div>
+</body>
+</html>
